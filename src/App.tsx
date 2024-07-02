@@ -3,7 +3,9 @@ import './App.css';
 
 function App() {
   return (
-    <History />
+    <div className='container'>
+      <History />
+    </div>
   )
 }
 

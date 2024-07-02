@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import { PointData } from '../../../types/types';
 import style from './CustomSwiper.module.css'
-import './CustomSwiper.css'
 import 'swiper/css'
 import 'swiper/swiper-bundle.css';
+import './CustomSwiper.css'
 
 
 export const CustomSwiper:FC<Props> = ({activeBtn}) => {
@@ -16,14 +16,23 @@ export const CustomSwiper:FC<Props> = ({activeBtn}) => {
       </div>
 
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+        slidesPerView={1.5}
+        spaceBetween={30} 
         navigation={{
           nextEl: '.btn-next',
           prevEl: '.btn-prev'
         }}
-        modules={[ Navigation]}
+        modules={[ Navigation , Pagination]}
+        pagination={{ clickable: true } }
         className={style.mySwiper} 
+        breakpoints={{
+          1200: {
+          slidesPerView: 2.99,
+          spaceBetween: 30,
+          pagination: false
+          }
+        } 
+        }
       >
 
         {activeBtn.data.dateContain.map(point =>( 

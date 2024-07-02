@@ -13,16 +13,17 @@ export const CircleLayout: FC<Props> = ({ activeBtn, handleClick}) =>{
         <div className={style.date}>
           Исторические <br/> даты
         </div>
-        <div className='genre'>
-          {text}
-        </div>
-
         <div className={style.numbers}>
           <span className='number_one'>{dates[0]}</span>
           &nbsp;
           <span className='number_two'>{dates[1]}</span>
         </div>
 
+        <div className='genre'>
+          {text}
+        </div>
+
+        
         <div className={style.counter}>
           <div className={style.range}>
             0{activeNumber}/06
