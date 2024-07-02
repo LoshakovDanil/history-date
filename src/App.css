@@ -1,0 +1,12 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+body {
+  background-color: #f4f5f9;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  color: #42567A;
+}

@@ -1,0 +1,62 @@
+.point {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #42567A;
+  border-radius: 50%; 
+  top: 50%; 
+  left: 50%; 
+  transition: 0.5s;
+  cursor: pointer;
+}
+.point:hover{
+  width: 56px;
+  height: 56px;
+  background-color: #f4f5f9;
+  border: 1px solid #929aa9;
+}
+.point::before,
+.point::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.point::before {
+  content: '';
+  width: 56px; 
+  height: 56px; 
+  border-radius: 50%;
+}
+.point::after {
+  content: attr(data-number);
+  position: absolute;
+  display: none;
+  color: #42567A;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+}
+.point:hover::after {
+  display: block;
+  content: attr(data-number);
+}
+.point.active {
+  content: '';
+  width: 56px;
+  height: 56px;
+  background-color: #f4f5f9;
+  border: 1px solid #929aa9;
+}
+.point.active::after {
+  display: block;
+}
+
+#point1 { transform: translate(-50%, -50%) rotate(300deg) translate(268px) rotate(-300deg); }
+#point2 { transform: translate(-50%, -50%) rotate(0deg) translate(268px) rotate(0deg); }
+#point3 { transform: translate(-50%, -50%) rotate(60deg) translate(268px) rotate(-60deg); }
+#point4 { transform: translate(-50%, -50%) rotate(120deg) translate(268px) rotate(-120deg); }
+#point5 { transform: translate(-50%, -50%) rotate(180deg) translate(268px) rotate(-180deg); }
+#point6 { transform: translate(-50%, -50%) rotate(240deg) translate(268px) rotate(-240deg); }
+
+

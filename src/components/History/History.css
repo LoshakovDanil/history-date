@@ -1,0 +1,132 @@
+@media (max-width: 768px) {
+  .History {
+    height: 100vh;
+    width: calc(100% - 480px);
+    margin-left: 320px; 
+    margin-right: 160px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; 
+    border: 1px solid #e3e6ed;
+    position: relative;
+  }
+  .circleContainer{
+    flex: 12;
+    position: relative;
+    width: 1440px; 
+  }
+  .circle {
+    position: absolute;
+    width: 536px; 
+    height: 536px;
+    border-radius: 50%;
+    border: 1px solid #e3e6ed;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2
+  }
+  .swiperContainer{
+    flex: 2;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: nowrap;
+    max-height: 250px;
+    min-height: 250px;           
+    width: 100%;
+    font-size: 25px;
+  }
+  .genre{
+    text-align: start;
+    margin: 50px;
+    padding-top: 110px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    grid-area: 1 / 7 / 3 / 9;
+  }
+  .number_one{
+    color: #5d5fef;
+  }
+  .number_two{
+    color: #ef5da8;
+  }
+  
+}
+
+.History {
+  height: 100vh;
+  width: calc(100% - 480px);
+  margin-left: 320px; 
+  margin-right: 160px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box; 
+  border: 1px solid #e3e6ed;
+  position: relative;
+}
+.History::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%; 
+  width: 2px;
+  background-color: #e3e6ed;
+  z-index: -1;
+}
+.History::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 42%; 
+  height: 2px; 
+  background-color: #e3e6ed; 
+  z-index: -1;
+}
+.circleContainer{
+  flex: 12;
+  position: relative;
+  width: 1440px; 
+}
+.circle {
+  position: absolute;
+  width: 536px; 
+  height: 536px;
+  border-radius: 50%;
+  border: 1px solid #e3e6ed;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2
+}
+.swiperContainer{
+  flex: 2;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-wrap: nowrap;
+  max-height: 250px;
+  min-height: 250px;           
+  width: 100%;
+  font-size: 25px;
+}
+.genre{
+  text-align: start;
+  margin: 50px;
+  padding-top: 110px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  grid-area: 1 / 7 / 3 / 9;
+}
+.number_one{
+  color: #5d5fef;
+}
+.number_two{
+  color: #ef5da8;
+}
