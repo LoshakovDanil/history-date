@@ -95,18 +95,22 @@ export const History = () => {
   }
 
   return (
-    <div className="History">
+    <div className='History_bac_container'>
+      <div className='History_container'>
+        <div className="History">
 
-      <CircleContainer 
-        pointsData={pointsData}
-        activeBtn={activeBtn}
-        handleClick={handleClick}
-      />
-      
-      <CustomSwiper 
-        activeBtn={activeBtn}
-      />
-
+          <CircleContainer 
+            pointsData={pointsData}
+            activeBtn={activeBtn}
+            handleClick={handleClick}
+          />
+          
+          <CustomSwiper 
+            activeBtn={activeBtn}
+          />
+          
+        </div>
+      </div>
     </div>
   ) 
 }
