@@ -6,17 +6,16 @@ import '../../History.css'
 export const CircleLayout: FC<Props> = ({ activeBtn, handleClick}) =>{
   const text = activeBtn.text
   const activeNumber = activeBtn.number
-  const dates = activeBtn.data.date
-
+  
   return (
     <div className={style.circleLayout}>
         <div className={style.date}>
           Исторические <br/> даты
         </div>
         <div className={style.numbers}>
-          <span className='number_one'>{dates[0]}</span>
+          <span className='number_one'>1980</span>
           &nbsp;
-          <span className='number_two'>{dates[1]}</span>
+          <span className='number_two'>1986</span>
         </div>
 
         <div className='genre'>

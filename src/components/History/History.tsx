@@ -10,33 +10,37 @@ export const History = () => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleClick = (nextPoint: PointData | null, btnRotation?: number) => {
-    if (isAnimating) return;
-    setIsAnimating(true);
+    
+    if (isAnimating) return
+    setIsAnimating(true)
 
-    const nextActivePoint = nextPoint
-    const numbers = activeBtn.data.date
+    // вычисляем градус поворота и изменяем активное состояние
+    let rotationDirection = 0
+    let numbers: number[]
 
-    let rotationDirection
+    if (nextPoint) {
+      numbers = nextPoint.data.date
+      const currentAngle = (activeBtn.number - 1) * 60
+      const nextAngle = (nextPoint.number - 1) * 60
+    
+      rotationDirection = nextAngle - currentAngle;
 
-    // вычисляем градус поворота
+      if (rotationDirection > 180) {
+        rotationDirection -= 360
+      } else if (rotationDirection < -180) {
+        rotationDirection += 360
+      }
+      
+      setActiveBtn(nextPoint);
+    } else if (btnRotation !== undefined) {
+      const currentIndex = activeBtn.number - 1
+      const nextIndex = (currentIndex + (btnRotation === 60 ? 1 : -1) + 6) % 6
+      numbers = pointsData[nextIndex].data.date
+      setActiveBtn(pointsData[nextIndex])
 
-    if (btnRotation) {
       rotationDirection = btnRotation;
     } else {
-      if(nextActivePoint){
-        const pointsCount = pointsData.length
-        const degreesPerPoint = 360 / pointsCount
-        const currentAngle = (activeBtn.number - 1) * degreesPerPoint
-        const nextAngle = (nextActivePoint?.number - 1) * degreesPerPoint
-      
-        rotationDirection = nextAngle - currentAngle;
-
-        if (rotationDirection > 180) {
-          rotationDirection -= 360;
-        } else if (rotationDirection < -180) {
-          rotationDirection += 360;
-        }
-      }
+      return
     }
 
 
@@ -64,38 +68,23 @@ export const History = () => {
     .to('.genre', {
       opacity: 1,
     })
-  
+    
     gsap.to('.number_one', {
       textContent: numbers[0],
       duration: 0.6,
       ease: 'power1.inOut',
       snap: { textContent: 1 },
     })
-
     gsap.to('.number_two', {
       textContent: numbers[1],
       duration: 0.6,
       ease: 'power1.inOut',
       snap: { textContent: 1 },
     })
-
-    // устанавливает состояние в зависимости от угла
-
-    if(btnRotation){
-      if(btnRotation === 60){
-        setActiveBtn(pointsData[activeBtn.number])
-      }else if(btnRotation === -60){
-        setActiveBtn(pointsData[activeBtn.number - 2])
-      }
-    }else{
-      if (nextPoint) {
-        setActiveBtn(nextPoint);
-    }
-    }
   }
 
   return (
-    <div className='History_bac_container'>
+    <div className='History_big_container'>
       <div className='History_container'>
         <div className="History">
 
