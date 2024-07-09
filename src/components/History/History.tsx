@@ -1,88 +1,50 @@
-import gsap from 'gsap'
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { CustomSwiper } from './CustomSwiper/CustomSwiper';
 import { CircleContainer } from './CircleContainer/CircleContainer';
 import { PointData } from '../../types/types';
 import './History.css';
 
+
 export const History = () => {
   const [activeBtn, setActiveBtn] = useState(pointsData[0])
-  const [isAnimating, setIsAnimating] = useState(false);
+  const isAnimatingRef = useRef(false);
+  const [rotationDirection, setRotationDirection] = useState<number>(0)
 
-  const handleClick = (nextPoint: PointData | null, btnRotation?: number) => {
+  const handleClick = useCallback((nextPoint: PointData | null, btnRotation?: number) => {
+    if (isAnimatingRef.current) return; 
+    isAnimatingRef.current = true;
     
-    if (isAnimating) return
-    setIsAnimating(true)
-
-    // вычисляем градус поворота и изменяем активное состояние
-    let rotationDirection = 0
-    let numbers: number[]
-
     if (nextPoint) {
-      numbers = nextPoint.data.date
       const currentAngle = (activeBtn.number - 1) * 60
       const nextAngle = (nextPoint.number - 1) * 60
     
-      rotationDirection = nextAngle - currentAngle;
+      let tempRotationDirection = nextAngle - currentAngle;
 
-      if (rotationDirection > 180) {
-        rotationDirection -= 360
-      } else if (rotationDirection < -180) {
-        rotationDirection += 360
+      if (tempRotationDirection > 180) {
+        tempRotationDirection -= 360
+      } else if (tempRotationDirection < -180) {
+        tempRotationDirection += 360
       }
-      
+
+      setRotationDirection(tempRotationDirection);
       setActiveBtn(nextPoint);
+
     } else if (btnRotation !== undefined) {
       const currentIndex = activeBtn.number - 1
       const nextIndex = (currentIndex + (btnRotation === 60 ? 1 : -1) + 6) % 6
-      numbers = pointsData[nextIndex].data.date
+      
       setActiveBtn(pointsData[nextIndex])
-
-      rotationDirection = btnRotation;
+      setRotationDirection(btnRotation)
     } else {
       return
     }
 
+    setTimeout(() => {
+      isAnimatingRef.current = false
+    }, 700)
+  },[ activeBtn])
 
-    gsap.to('.circle', {
-      rotation: `-=${rotationDirection}`, 
-      duration: 0.7, 
-      ease: 'linear', 
-      onComplete: () => setIsAnimating(false),
-    })
-
-    gsap.timeline()
-    .from('.swiperContainer', {
-      opacity: 0,
-      duration: 0.9,  
-    })
-    .to('.swiperContainer', {
-      opacity: 1,
-    })
-
-    gsap.timeline()
-    .from('.genre', {
-      opacity: 0,
-      duration: 0.9,  
-    })
-    .to('.genre', {
-      opacity: 1,
-    })
-    
-    gsap.to('.number_one', {
-      textContent: numbers[0],
-      duration: 0.6,
-      ease: 'power1.inOut',
-      snap: { textContent: 1 },
-    })
-    gsap.to('.number_two', {
-      textContent: numbers[1],
-      duration: 0.6,
-      ease: 'power1.inOut',
-      snap: { textContent: 1 },
-    })
-  }
-
+  
   return (
     <div className='History_big_container'>
       <div className='History_container'>
@@ -91,6 +53,7 @@ export const History = () => {
           <CircleContainer 
             pointsData={pointsData}
             activeBtn={activeBtn}
+            rotationDirection={rotationDirection}
             handleClick={handleClick}
           />
           

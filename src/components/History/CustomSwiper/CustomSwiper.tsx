@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import gsap from 'gsap'
+import React, { FC, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { PointData } from '../../../types/types';
@@ -9,8 +10,19 @@ import './CustomSwiper.css'
 
 
 export const CustomSwiper:FC<Props> = ({activeBtn}) => {
+  const swiperRef = useRef(null)
+  
+  gsap.timeline()
+    .from(swiperRef.current, {
+      opacity: 0,
+      duration: 0.9,  
+    })
+    .to(swiperRef.current, {
+      opacity: 1,
+    })
+
   return (
-    <div className='swiperContainer'> 
+    <div ref={swiperRef} className={style.swiperContainer}> 
       <div className={style.button + ' btn-prev'}>
         <span className={style.arrow}>&lsaquo;</span>
       </div>
@@ -44,7 +56,8 @@ export const CustomSwiper:FC<Props> = ({activeBtn}) => {
               {point.text}
             </div>
           </SwiperSlide>
-        ))}  
+        ))}
+
       </Swiper>
       
       <div className={style.button + ' btn-next'}>

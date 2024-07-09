@@ -1,11 +1,40 @@
-import { FC } from "react"
+import gsap from 'gsap'
+import { FC, useRef } from "react"
 import { PointData } from "../../../../types/types"
 import style from './CircleLayout.module.css'
 import '../../History.css'
 
-export const CircleLayout: FC<Props> = ({ activeBtn, handleClick}) =>{
+
+export const CircleLayout: FC<Props> = ({ activeBtn, handleClick }) =>{
   const text = activeBtn.text
   const activeNumber = activeBtn.number
+  const numbers = activeBtn.data.date
+  const genreRef = useRef(null)
+  const numberOneRef = useRef(null)
+  const numberTwoRef = useRef(null)
+  
+  gsap.timeline()
+  .from(genreRef.current, {
+    opacity: 0,
+    duration: 0.9,  
+  })
+  .to(genreRef.current, {
+    opacity: 1,
+  })
+
+  gsap.to(numberOneRef.current, {
+    textContent: numbers[0],
+    duration: 0.6,
+    ease: 'power1.inOut',
+    snap: { textContent: 1 },
+  })
+  gsap.to(numberTwoRef.current, {
+    textContent: numbers[1],
+    duration: 0.6,
+    ease: 'power1.inOut',
+    snap: { textContent: 1 },
+  })
+  
   
   return (
     <div className={style.circleLayout}>
@@ -13,15 +42,14 @@ export const CircleLayout: FC<Props> = ({ activeBtn, handleClick}) =>{
           Исторические <br/> даты
         </div>
         <div className={style.numbers}>
-          <span className='number_one'>1980</span>
+          <span ref={numberOneRef} className={style.number_one}>1980</span>
           &nbsp;
-          <span className='number_two'>1986</span>
+          <span ref={numberTwoRef} className={style.number_two}>1986</span>
         </div>
 
-        <div className='genre'>
+        <div ref={genreRef} className={style.genre}>
           {text}
         </div>
-
         
         <div className={style.counter}>
           <div className={style.range}>
