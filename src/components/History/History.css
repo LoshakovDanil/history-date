@@ -19,7 +19,6 @@
     left: 50%; 
     width: 2px;
     background-color: #e3e6ed;
-    z-index: -1;
   }
   .History::after {
     content: '';
@@ -29,43 +28,12 @@
     top: 42%; 
     height: 2px; 
     background-color: #e3e6ed; 
-    z-index: -1;
+
   }
   .circleContainer{
     flex: 12;
     position: relative;
     width: 1440px; 
-  }
-  .circle {
-    position: absolute;
-    width: 536px; 
-    height: 536px;
-    border-radius: 50%;
-    border: 1px solid #e3e6ed;
-    top: 57%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2
-  }
-  .swiperContainer{
-    flex: 2;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    flex-wrap: nowrap;
-    max-height: 250px;
-    min-height: 250px;           
-    width: 100%;
-    font-size: 25px;
-  }
-  .genre{
-    text-align: start;
-    margin: 50px;
-    padding-top: 110px;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 30px;
-    grid-area: 1 / 7 / 3 / 9;
   }
 }
 
@@ -74,32 +42,6 @@
     width: 100%;
     height: 525px;
     position: relative;
-  }
-  .genre{
-    text-align: start;
-    font-weight: 700;
-    margin-top: 30px;
-  }
-  .genre::after{
-    content: '';
-    display: block;
-    border: 1px solid #C7CDD9;
-    margin-top: 15px;
-  }
-  .swiperContainer{
-    display: flex;
-    justify-content: flex-start; 
-    align-items: flex-start; 
-    height: 160;
-    max-width: 100%; 
-    font-size: 25px;
-    margin-bottom: 22px;
-  }
+  } 
 }
 
-.number_one{
-  color: #3877ee;
-}
-.number_two{
-  color: #ef5da8;
-}

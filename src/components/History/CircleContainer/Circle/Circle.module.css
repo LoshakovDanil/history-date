@@ -1,4 +1,15 @@
 @media (min-width: 1440px){
+  .circle{
+    position: absolute;
+    width: 536px; 
+    height: 536px;
+    border-radius: 50%;
+    border: 1px solid #e3e6ed;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2
+  }
   .point {
     position: absolute;
     width: 6px;

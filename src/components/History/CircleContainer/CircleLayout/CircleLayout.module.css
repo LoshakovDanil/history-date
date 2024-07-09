@@ -34,6 +34,16 @@
     font-size: 200px;
     font-weight: 700;
     grid-area: 3 / 2 / 4 / 10;
+    z-index: 1;
+  }
+  .genre{
+    text-align: start;
+    margin: 50px;
+    padding-top: 110px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    grid-area: 1 / 7 / 3 / 9;
   }
   .counter{
     font-family: "Bebas Neue", sans-serif;
@@ -48,7 +58,7 @@
     content: "";
     position: absolute;
     top: 10px;
-    left: 0px; 
+    left: 15px; 
     width: 5px; 
     height: 115px; 
     background: linear-gradient(to bottom, #3877EE 0%, #EF5DA8 100%); 
@@ -83,12 +93,23 @@
     margin-top: 56px;
     margin-right: 35px;
   }
+  .genre{
+    text-align: start;
+    font-weight: 700;
+    margin-top: 30px;
+  }
+  .genre::after{
+    content: '';
+    display: block;
+    border: 1px solid #C7CDD9;
+    margin-top: 15px;
+  }
   .counter{
     position: fixed;
     left: 0;
     bottom: 0;
     padding: 0 0 0px 20px;
-    z-index: 2;  
+    z-index: 1;  
   }
   .button{
     width: 25px;
@@ -115,4 +136,11 @@
   opacity: 0.5;
   pointer-events: none;
   user-select: none;
+}
+
+.number_one{
+  color: #3877ee;
+}
+.number_two{
+  color: #ef5da8;
 }

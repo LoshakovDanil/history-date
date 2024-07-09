@@ -1,3 +1,7 @@
+body{
+  margin: 0px;
+}
+
 @media(max-width: 1440px){
   .History_container{
     margin: 20px;
@@ -5,9 +9,6 @@
 }
 
 .History_big_container {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background-color: #f4f5f9;

@@ -1,4 +1,15 @@
 @media (min-width: 1440px){
+  .swiperContainer{
+    flex: 2;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: nowrap;
+    max-height: 250px;
+    min-height: 250px;           
+    width: 100%;
+    font-size: 25px;
+  }
   .number{
     color: #3877EE;
     font-family: "Bebas Neue", sans-serif;
@@ -33,6 +44,15 @@
   }
 }
 @media (max-width: 1440px){
+  .swiperContainer{
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    height: 160;
+    max-width: 100%; 
+    font-size: 25px;
+    margin-bottom: 22px;
+  }
   .number{
     color: #3877EE;
     font-family: "Bebas Neue", sans-serif;
